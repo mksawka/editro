@@ -1,0 +1,62 @@
+.welcome-msg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  height: fit-content;
+  padding: 2em;
+  font-size: 3em;
+  font-weight: 600;
+  font-family: 'Lucida Sans', sans-serif;
+  text-align: center;
+  border: 5px solid black;
+  transform: translate(-50%, -50%);
+}
+
+.editor {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(48, 47, 114);
+  padding: 50px 30px;
+}
+
+.editor__screen {
+  margin: 0 auto;
+  position: relative;
+  counter-reset: line;
+  display: none;
+  outline: none;
+  width: 80%;
+  height: 100%;
+  min-width: 80%;
+  min-height: 100%;
+  font-family: 'Ubuntu Mono', 'Roboto Mono', monospace;
+  background-color: rgb(80, 79, 187);
+  font-size: 1.6em;
+  overflow-y: auto;
+}
+
+/* Line of input on the screen */
+.editor__screen div {
+  position: relative;
+  padding-left: 45px;
+  height: 1.4em;
+  line-height: 1.4em;
+}
+
+/* Line numbers */
+.editor__screen div::before {
+  content: counter(line);
+  counter-increment: line;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 0;
+  width: 40px;
+  height: 100%;
+  background-color: rgb(14, 28, 104);
+  color: rgb(165, 77, 26);
+  font-size: 17px;
+  font-weight: 900;
+}

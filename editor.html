@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>editro&#153; a code editor</title>
+    <link rel="stylesheet" href="config/reset.css" />
+    <link rel="stylesheet" href="config/editor.css" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body class="editor">
+    <noscript>
+        <h1>Please enable JavaScript in your browser.</h1>
+    </noscript>
+
+    <div class="welcome-msg">
+        Welcome to <span style="background-color: cadetblue">editro&#153;</span> <br />Start typing when you are ready. <br /><br />ver <span id="ver">0.2.0</span>
+    </div>
+    
+    <div class="editor__screen" contenteditable="true" spellcheck="false" autofocus>
+        <div></div>
+    </div>
+
+    <script src="source/editro.js"></script>
+</body>
+</html>
