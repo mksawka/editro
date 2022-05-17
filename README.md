@@ -4,7 +4,7 @@
 
 ---
 
-### editro is a Keep It Simple Stupid web based code editor.
+### editro is a simple web-based code editor.
 ### No less, no more.
 
 **Development in progress in my spare time.**
