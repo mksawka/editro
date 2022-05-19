@@ -30,14 +30,16 @@
   height: 100%;
   min-width: 80%;
   min-height: 100%;
+  border: 1px solid black;
   font-family: 'Ubuntu Mono', 'Roboto Mono', monospace;
-  background-color: rgb(80, 79, 187);
+  background-color: rgb(36, 35, 87);
   font-size: 1.6em;
   overflow-y: auto;
+  color: whitesmoke;
 }
 
 /* Line of input on the screen */
-.editor__screen div {
+.editor__screen > div {
   position: relative;
   padding-left: 45px;
   height: 1.4em;
@@ -45,7 +47,7 @@
 }
 
 /* Line numbers */
-.editor__screen div::before {
+.editor__screen > div::before {
   content: counter(line);
   counter-increment: line;
   display: flex;
@@ -55,8 +57,18 @@
   left: 0;
   width: 40px;
   height: 100%;
-  background-color: rgb(14, 28, 104);
+  background-color: rgb(25, 24, 61);
   color: rgb(165, 77, 26);
   font-size: 17px;
   font-weight: 900;
+}
+
+#current-line {
+  background-color: rgb(45, 44, 110);
+}
+
+#cursor {
+  width: 1em;
+  height: 2em;
+  background-color: yellow;
 }
