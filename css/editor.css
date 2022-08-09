@@ -41,9 +41,12 @@
 /* Line of input on the screen */
 .editor__screen > div {
   position: relative;
+  display: flex;
   padding-left: 45px;
   height: 1.4em;
   line-height: 1.4em;
+  overflow: auto;
+  z-index: 2;
 }
 
 /* Line numbers */
@@ -68,7 +71,12 @@
 }
 
 #cursor {
-  width: 1em;
-  height: 2em;
+  width: 15px;
+  height: 100%;
   background-color: yellow;
+  z-index: 1;
+}
+
+.char {
+    min-width: 13px;
 }
