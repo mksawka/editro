@@ -14,9 +14,9 @@
  */
 
 const CURRENT_VERSION = '0.0.1';
-
-//  Prevent keyboardParser from printing these chars.
+const INPUT_LINES = [];
 const UNPRINTABLE_CHARS = [
+    // Prevent keyboardParser from printing these chars:
     'Enter',
     'Backspace',
     'Tab',
@@ -62,17 +62,20 @@ const UNPRINTABLE_CHARS = [
 ];
 
 
-//  Editor interface DOM elements.
+
+/*
+ *
+ *  Editor interface DOM elements.
+ *
+ */
 
 const WELCOME_MSG = document.querySelector('.welcome-msg');
 const VERSION_DISPLAY = document.querySelector('#ver');
 const EDITOR_SCREEN = document.querySelector('.editor__screen');
-const INPUT_LINES = [];
 const CURSOR = createCursor();
 
 
-
-//  Set version number in welcome message.
+// Set version number in welcome message.
 VERSION_DISPLAY.textContent = CURRENT_VERSION;
 
 function createCursor() {
@@ -117,8 +120,6 @@ function deleteChar() {
     currentLine.textContent = '';
 }
 
-
-
 function keyboardParser(keyEvent) {
     if (keyEvent.key === 'Enter') insertNewLine();
     if (keyEvent.key === 'Backspace') deleteChar();
@@ -126,6 +127,7 @@ function keyboardParser(keyEvent) {
             insertChar(keyEvent);
     }
 }
+
 
 window.addEventListener("load", () => {
     //  When user begin typing.

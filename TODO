@@ -1,0 +1,6 @@
+TODO
+=====
+
+* Implement cursor movement.
+* Display total lines and chars in editor.
+* Add possibility to convert editor content to downloadable txt file.

@@ -1,0 +1,11 @@
+# Version 0.1.0		[2022-08-09]
+====================================
+
+This is initial version of editro implementing very basic code editing features.
+
+Added:
+- Add/remove chars from keyboard.
+- Inserting new lines.
+- Removing lines.
+- Line numbers.
+- Basic colorscheme.
