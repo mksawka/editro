@@ -13,7 +13,7 @@
  *
  */
 
-const CURRENT_VERSION = '0.0.1';
+const EDITRO_VERSION = '0.1.0';
 
 //  Prevent keyboardParser from printing these chars.
 const UNPRINTABLE_CHARS = [
@@ -23,6 +23,7 @@ const UNPRINTABLE_CHARS = [
     'Shift',
     'Control',
     'Alt',
+    'AltGraph',
     'Pause',
     'CapsLock',
     'Escape',
@@ -59,6 +60,7 @@ const UNPRINTABLE_CHARS = [
     'F10',
     'F11',
     'F12',
+    'OS',
 ];
 
 
@@ -71,9 +73,18 @@ const INPUT_LINES = [];
 const CURSOR = createCursor();
 
 
-
 //  Set version number in welcome message.
-VERSION_DISPLAY.textContent = CURRENT_VERSION;
+VERSION_DISPLAY.textContent = EDITRO_VERSION;
+
+function getCurrentLine() {
+    return document.querySelector('#current-line');
+}
+
+function setCurrentLine(line) {
+    clearLinesHL();
+    line.id = 'current-line';
+    setCursor();
+}
 
 function createCursor() {
     const cursor = document.createElement('div');
@@ -89,32 +100,55 @@ function showEditorScreen() {
     EDITOR_SCREEN.style.display = 'block';
 }
 
+function setCursor() {
+    CURSOR.remove();
+    getCurrentLine().appendChild(CURSOR);
+}
+
+function insertNewLine() {
+    const line = document.createElement('div');
+    clearLinesHL();
+    line.id = 'current-line';
+    INPUT_LINES.push(line);
+    EDITOR_SCREEN.appendChild(line);
+    setCursor();
+}
+
 function initEdit() {
     hideWelcomeMsg();
     showEditorScreen();
     insertNewLine();
 }
 
-function clearCurrentLn() {
-    for (let ln of INPUT_LINES) ln.id = '';
+function clearLinesHL() {
+    for (let line of INPUT_LINES) line.id = '';
 }
 
-function insertNewLine() {
-    const line = document.createElement('div');
-    clearCurrentLn();
-    line.id = 'current-line';
-    INPUT_LINES.push(line);
-    EDITOR_SCREEN.appendChild(line);
+function removeCurrentLine() {
+    if (EDITOR_SCREEN.childElementCount > 1) {
+        getCurrentLine().remove();
+    } 
+}
+
+function jumpToPrevLine() {
+    const prevLine = getCurrentLine().previousElementSibling;
+    removeCurrentLine();
+    if (prevLine !== null) setCurrentLine(prevLine);
 }
 
 function insertChar(keyEvent) {
-    const currentLine = document.querySelector('#current-line');
-    currentLine.textContent += keyEvent.key;
+    const char = document.createElement('span');
+    char.classList.add('char');
+    char.textContent += keyEvent.key;
+    getCurrentLine().insertBefore(char, CURSOR);
 }
 
 function deleteChar() {
-    const currentLine = document.querySelector('#current-line');
-    currentLine.textContent = '';
+    if (CURSOR.previousElementSibling !== null) {
+        CURSOR.previousElementSibling.remove();
+    } else {
+        jumpToPrevLine();
+    }
 }
 
 
